@@ -1,0 +1,17 @@
+{
+  "name": "dockering",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "docker:build": "docker build -t pw-dockering-base .",
+    "docker:run": "docker run --rm -v $(pwd):/app -w /app pw-dockering-base npx playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.53.2",
+    "@types/node": "^24.0.8"
+  }
+}

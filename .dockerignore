@@ -1,0 +1,7 @@
+node_modules
+test-results
+tests-examples
+Dockerfile
+.git
+.gitignore
+.dockerignore
