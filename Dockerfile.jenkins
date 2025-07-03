@@ -1,9 +1,9 @@
 FROM jenkins/jenkins:lts
 
 USER root
-RUN apt-get update && apt-get install -y curl gnupg2
-
+RUN apt-get update && apt-get install -y curl gnupg2 docker.io
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs
+RUN groupadd -f docker && usermod -aG docker jenkins
 
 USER jenkins
 EXPOSE 8080
