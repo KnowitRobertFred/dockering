@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "docker:build": "docker build -t pw-dockering-base .",
-    "docker:run": "docker run -v $(pwd):/app -w /app pw-dockering-base ls /app",
+    "docker:run": "docker run -w /app pw-dockering-base ls /app",
     "jenkins:build": "docker build --build-arg DOCKER_GID=$(stat -c '%g' /var/run/docker.sock) -t jenkins-custom -f Dockerfile.jenkins .",
     "jenkins:start": "docker run -d -p 8080:8080 -v $(pwd)/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock --name jenkins jenkins-custom"
   },
