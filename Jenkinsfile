@@ -13,4 +13,16 @@ pipeline {
       }
     }
   }
+  post {
+    always {
+      archiveArtifacts artifacts: 'test-results/**/*', 
+      allowEmptyArchive: true,
+      publishHTML(target: [
+        reportName: 'Playwright report',
+        reportDir: 'test-results',
+        reportFiles: 'index.html',
+        keepAll: true
+      ])
+    }
+  }
 }
