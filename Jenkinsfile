@@ -9,6 +9,7 @@ pipeline {
     }
     stage('Run tests') {
       steps {
+        sh 'ls /app'
         sh 'npm run docker:run'
       }
     }
