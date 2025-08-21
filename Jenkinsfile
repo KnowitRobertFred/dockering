@@ -15,8 +15,7 @@ pipeline {
   }
   post {
     always {
-      archiveArtifacts artifacts: 'test-results/**/*', 
-      allowEmptyArchive: true,
+      archiveArtifacts artifacts: 'test-results/**/*'
       publishHTML(target: [
         reportName: 'Playwright report',
         reportDir: 'test-results',
