@@ -1,9 +1,19 @@
 FROM jenkins/jenkins:lts
 
 USER root
-RUN apt-get update && apt-get install -y curl gnupg2 docker.io
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs
-RUN groupadd -f docker && usermod -aG docker jenkins
 
-USER jenkins
+# Installera Docker CLI och Node.js
+RUN apt-get update && \
+    apt-get install -y docker.io curl gnupg lsb-release ca-certificates && \
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs
+
+# (Valfritt) Lägg till jenkins-användaren i docker-gruppen om du vill köra som jenkins senare
+# ARG DOCKER_GID=80
+# RUN groupadd -for -g $DOCKER_GID docker && usermod -aG docker jenkins
+# USER jenkins
+
 EXPOSE 8080
+# Sätt tidszon till Europe/Stockholm
+RUN ln -sf /usr/share/zoneinfo/Europe/Stockholm /etc/localtime && \
+    echo "Europe/Stockholm" > /etc/timezone
