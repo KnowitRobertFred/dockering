@@ -16,7 +16,6 @@ pipeline {
   }
   post {
     always {
-      sh 'ls -l /app'
       publishHTML(target: [allowMissing: false,
         alwaysLinkToLastBuild: true,
         keepAll: true,
