@@ -15,12 +15,13 @@ pipeline {
   }
   post {
     always {
-      archiveArtifacts artifacts: 'test-results/**/*'
-      publishHTML(target: [
-        reportName: 'Playwright report',
+      publishHTML(target: [allowMissing: false,
+        alwaysLinkToLastBuild: true,
+        keepAll: true,
         reportDir: 'test-results',
         reportFiles: 'index.html',
-        keepAll: true
+        reportName: 'Test report',
+        reportTitle: 'The report'
       ])
     }
   }
