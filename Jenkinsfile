@@ -10,7 +10,6 @@ pipeline {
     stage('Run tests') {
       steps {
         sh 'npm run docker:run'
-        sh 'ls -l /app'
       }
     }
   }
