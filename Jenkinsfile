@@ -16,10 +16,11 @@ pipeline {
   }
   post {
     always {
+      sh 'ls -l /app'
       publishHTML(target: [allowMissing: false,
         alwaysLinkToLastBuild: true,
         keepAll: true,
-        reportDir: 'test-results',
+        reportDir: 'playwright-report',
         reportFiles: 'index.html',
         reportName: 'Test report',
         reportTitles: 'The report'
