@@ -10,6 +10,7 @@ pipeline {
     stage('Run tests') {
       steps {
         sh 'npm run docker:run'
+        sh 'ls -l /app'
       }
     }
   }
@@ -21,7 +22,7 @@ pipeline {
         reportDir: 'test-results',
         reportFiles: 'index.html',
         reportName: 'Test report',
-        reportTitle: 'The report'
+        reportTitles: 'The report'
       ])
     }
   }
