@@ -9,19 +9,19 @@ pipeline {
     }
     stage('Run tests') {
       steps {
-        sh 'npm run docker:run'
+        sh "docker run --rm -v ${WORKSPACE}/playwright-report:/app/playwright-report -w /app pw-dockering-base npx playwright test"
       }
     }
   }
   post {
     always {
-      publishHTML(target: [allowMissing: false,
+      publishHTML([
+        allowMissing: false,
         alwaysLinkToLastBuild: true,
         keepAll: true,
         reportDir: 'playwright-report',
         reportFiles: 'index.html',
-        reportName: 'Test report',
-        reportTitles: 'The report'
+        reportName: 'Playwright Test Report'
       ])
     }
   }
